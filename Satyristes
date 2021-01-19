@@ -1,0 +1,47 @@
+;; For Satyrographos 0.0.2 series
+(version 0.0.2)
+
+;; Library declaration
+(library
+  ;; Library name
+  (name "fonts-charis-sil")
+  ;; Library version
+  (version "1.0.0")
+  ;; Files
+  (sources
+    ((hash "fonts.satysfi-hash" "./fonts.satysfi-hash")
+     (font "CharisSIL-R.ttf" "./charis-sil/CharisSIL-R.ttf")
+     (font "CharisSIL-B.ttf" "./charis-sil/CharisSIL-B.ttf")
+     (font "CharisSIL-I.ttf" "./charis-sil/CharisSIL-I.ttf")
+     (font "CharisSIL-BI.ttf" "./charis-sil/CharisSIL-BI.ttf")))
+  (compatibility ((renameFont fonts-charis-sil:CharisSIL-Regular CharisSIL-Regular)
+                  (renameFont fonts-charis-sil:CharisSIL-Bold CharisSIL-Bold)
+                  (renameFont fonts-charis-sil:CharisSIL-Italic CharisSIL-Italic)
+                  (renameFont fonts-charis-sil:CharisSIL-BoldItalic CharisSIL-BoldItalic)))
+  ;; OPAM package file
+  (opam "satysfi-fonts-charis-sil.opam")
+  ;; Dependency
+  (dependencies ()))
+
+;; Library doc declaration
+(libraryDoc
+  ;; Library doc name
+  (name "fonts-charis-sil-doc")
+  ;; Library version
+  (version "1.0.0")
+  ;; Working directory to build docs
+  (workingDirectory "doc")
+  ;; Build commands
+  (build
+    ;; Run SATySFi
+    ((satysfi "manual.saty" "-o" "manual.pdf")))
+  ;; Files
+  (sources
+    ((doc "manual.pdf" "doc/manual.pdf")))
+  ;; OPAM package file
+  (opam "satysfi-fonts-charis-sil-doc.opam")
+  ;; Dependency
+  (dependencies
+    ((fonts-charis-sil ()) ; the main library
+     (dist ()) ; Standard library
+    )))

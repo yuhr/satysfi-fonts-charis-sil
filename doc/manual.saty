@@ -1,0 +1,26 @@
+@require: stdjareport
+@require: itemize
+
+let-inline ctx \phon s =
+  let font-name = `fonts-charis-sil:CharisSIL-Regular` in
+  let ctx = ctx
+    |> set-font Latin (font-name, 1., 0.)
+    |> set-font OtherScript (font-name, 1., 0.) in
+  read-inline ctx (embed-string s)
+
+in document (|
+  title = {\SATySFi; Fonts: Charis SIL};
+  author = {Yu Shimura \<mail\@yuhr.org\>};
+  show-title = true;
+  show-toc = false;
+|) '<
+  +p{
+    This package provides SIL's Charis font family support. The font supports a wide range of combining and supplemental characters especially used for phonetic notations in International Phonetic Alphabet (IPA).
+  }
+  +chapter{Examples}<
+    +listing{
+      * \phon(`[aɪ pʰiː eɪ]`);
+      * \phon(`[k˨.ˈɺ͍e˧.ɺ͍i˧.ˈkɜ˥]`);
+    }
+  >
+>
